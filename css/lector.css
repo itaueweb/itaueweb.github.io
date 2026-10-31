@@ -141,3 +141,11 @@ body.modo-movil .vista-movil{ display:flex; justify-content:center; width:100%; 
   .escena{ padding:1rem; }
   .control{ width:50px; height:50px; font-size:1.2rem; }
 }
+.pagina{
+  position:relative; z-index:1; flex:1;
+  padding:2.5rem 3rem; /* Ajustamos un poco el margen interno */
+  display:flex; flex-direction:column; justify-content:center;
+  color:var(--texto-papel);
+  font-family:var(--serif-cuerpo); font-size:1.1rem; line-height:1.7; /* Fuente ligeramente más ajustada */
+  overflow: hidden; /* Esto asegura que si hay un error, el texto no se salga de la hoja */
+}
