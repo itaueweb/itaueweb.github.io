@@ -1,5 +1,4 @@
 :root{
-  /* Paleta Oscura / Horror */
   --obsidiana: #08080a;
   --carbon: #121215;
   --sangre: #8b0000;
@@ -9,7 +8,6 @@
   --texto-papel: #1a1a1a;
   --texto-claro: #d1d1d1;
 
-  /* Tipografías */
   --serif-titulo: 'Cinzel', Georgia, serif;
   --serif-cuerpo: 'EB Garamond', Georgia, serif;
   --mono: 'Courier Prime', 'Courier New', monospace;
@@ -34,7 +32,6 @@ img,svg{ display:block; max-width:100%; }
 a{ color:inherit; }
 button{ font-family:inherit; }
 
-/* Tipografía Global */
 h1,h2,h3{
   font-family:var(--serif-titulo);
   font-weight:400;
@@ -57,7 +54,6 @@ h1,h2,h3{
 .centro{ text-align:center; }
 .centro__texto{ margin-left:auto; margin-right:auto; }
 
-/* Botones */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -89,7 +85,6 @@ h1,h2,h3{
 }
 .btn--fantasma:hover{ background:rgba(255,255,255,0.05); border-color:#fff; color:#fff; }
 
-/* Animaciones Reveal */
 .revelar{ opacity:0; transform:translateY(20px); transition:opacity 1s ease, transform 1s ease; }
 .revelar.visible{ opacity:1; transform:none; }
 
