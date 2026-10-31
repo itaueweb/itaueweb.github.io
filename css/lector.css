@@ -20,15 +20,18 @@ body.lector{
 /* Escena 3D */
 .escena{
   flex:1; display:flex; align-items:center; justify-content:center;
-  padding:2rem 1rem; perspective:2500px;
+  padding:2rem 1rem; 
+  perspective:2500px;
+  perspective-origin: 50% 50%;
 }
 .libro{
-  position:relative; width:min(1000px, 95vw); height:min(650px, 75vh);
+  position:relative; width:min(1000px, 95vw); height:min(680px, 75vh);
   transform-style:preserve-3d;
+  -webkit-transform-style:preserve-3d;
 }
 .base-izq, .base-der{
   position:absolute; top:0; width:50%; height:100%; z-index:0;
-  background:#111; /* Fondo del libro vacío */
+  background:#111;
 }
 .base-izq{ left:0; border-radius:4px 0 0 4px; box-shadow:inset -20px 0 30px -20px rgba(0,0,0,0.8); }
 .base-der{ left:50%; border-radius:0 4px 4px 0; box-shadow:inset 20px 0 30px -20px rgba(0,0,0,0.8); }
@@ -36,20 +39,34 @@ body.lector{
 /* Hojas */
 .hoja{
   position:absolute; top:0; left:50%; width:50%; height:100%;
-  transform-origin:left center; transform-style:preserve-3d;
+  transform-origin:left center; 
+  transform-style:preserve-3d;
+  -webkit-transform-style:preserve-3d;
   transition:transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
   will-change:transform; cursor:pointer;
 }
 .hoja.volteada{ transform:rotateY(-180deg); }
 
+/* Caras de la hoja */
 .cara{
-  position:absolute; inset:0; backface-visibility:hidden;
+  position:absolute; inset:0; 
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
   background-color:var(--papel-viejo);
   overflow:hidden; display:flex; flex-direction:column;
-  box-shadow:0 0 20px rgba(0,0,0,0.3);
+  -webkit-transform: translate3d(0,0,0); /* Forzar renderizado GPU */
+  transform: translate3d(0,0,0);
 }
-.cara.frente{ border-radius:2px 6px 6px 2px; box-shadow:inset 15px 0 30px -20px rgba(0,0,0,0.5), 2px 0 5px rgba(0,0,0,0.3); }
-.cara.dorso{ transform:rotateY(180deg); border-radius:6px 2px 2px 6px; box-shadow:inset -15px 0 30px -20px rgba(0,0,0,0.5), -2px 0 5px rgba(0,0,0,0.3); }
+
+.cara.frente{ 
+  border-radius:2px 6px 6px 2px; 
+  box-shadow:inset 15px 0 30px -20px rgba(0,0,0,0.5), 2px 0 5px rgba(0,0,0,0.3); 
+}
+.cara.dorso{ 
+  transform:rotateY(180deg) translate3d(0,0,0); 
+  border-radius:6px 2px 2px 6px; 
+  box-shadow:inset -15px 0 30px -20px rgba(0,0,0,0.5), -2px 0 5px rgba(0,0,0,0.3); 
+}
 
 /* Textura de papel envejecido */
 .cara::before{
@@ -61,19 +78,19 @@ body.lector{
 /* Página */
 .pagina{
   position:relative; z-index:1; flex:1;
-  padding:3rem 4rem;
+  padding:2.5rem 3.5rem; /* Ajustado para que no se corte el texto abajo */
   display:flex; flex-direction:column; justify-content:center;
   color:var(--texto-papel);
-  font-family:var(--serif-cuerpo); font-size:1.15rem; line-height:1.8;
+  font-family:var(--serif-cuerpo); font-size:1.15rem; line-height:1.75;
 }
-.pagina p{ margin:0 0 1.2em; text-align:justify; }
+.pagina p{ margin:0 0 1em; text-align:justify; }
 .pagina p:last-child{ margin-bottom:0; }
 
 /* Estilos específicos de contenido */
 .pagina--texto{ justify-content:flex-start; }
-.pagina__numero{ font-family:var(--mono); font-size:0.7rem; color:var(--sangre); text-transform:uppercase; letter-spacing:0.2em; margin-bottom:1.5rem; text-align:center; border-bottom:1px solid rgba(139,0,0,0.2); padding-bottom:0.5rem; }
-.pagina__titulo{ font-family:var(--serif-titulo); font-size:1.8rem; color:#111; margin:0 0 2rem; line-height:1.2; text-align:center; }
-.pagina__folio{ position:absolute; bottom:1.5rem; font-family:var(--mono); font-size:0.7rem; color:#666; }
+.pagina__numero{ font-family:var(--mono); font-size:0.7rem; color:var(--sangre); text-transform:uppercase; letter-spacing:0.2em; margin-bottom:1rem; text-align:center; border-bottom:1px solid rgba(139,0,0,0.2); padding-bottom:0.5rem; }
+.pagina__titulo{ font-family:var(--serif-titulo); font-size:1.6rem; color:#111; margin:0 0 1.5rem; line-height:1.2; text-align:center; }
+.pagina__folio{ position:absolute; bottom:1.2rem; font-family:var(--mono); font-size:0.7rem; color:#666; }
 .cara.frente .pagina__folio{ right:2rem; }
 .cara.dorso .pagina__folio{ left:2rem; }
 
