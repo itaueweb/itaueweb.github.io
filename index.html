@@ -10,6 +10,48 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/estilos.css">
 <link rel="stylesheet" href="css/landing.css">
+<style>
+  /* Estilos del Oráculo para la Landing */
+  .oraculo-btn {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 1000;
+    background: var(--sangre); color: #fff; border: none; padding: 1rem 1.5rem;
+    font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em;
+    cursor: pointer; border-radius: 50px; box-shadow: 0 4px 15px rgba(139,0,0,0.6);
+    transition: all 0.3s; font-size: 0.85rem;
+  }
+  .oraculo-btn:hover { background: var(--sangre-clara); transform: translateY(-3px); }
+
+  .oraculo-modal {
+    position: fixed; bottom: 6rem; right: 2rem; width: 380px; height: 500px;
+    background: #111; border: 1px solid var(--sangre); border-radius: 8px;
+    display: flex; flex-direction: column; z-index: 1000;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.9); transition: opacity 0.3s, transform 0.3s;
+  }
+  .oraculo-modal.oculto { opacity: 0; pointer-events: none; transform: translateY(20px); }
+
+  .oraculo-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem; border-bottom: 1px solid #333; background: #0a0a0c;
+    border-radius: 8px 8px 0 0;
+  }
+  .oraculo-header h3 { font-family: var(--serif-titulo); color: #fff; margin: 0; font-size: 1.2rem; }
+  .oraculo-header button { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+
+  .oraculo-mensajes { flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; }
+  .mensaje { font-family: var(--serif-cuerpo); font-size: 0.95rem; line-height: 1.5; padding: 0.8rem; border-radius: 4px; max-width: 85%; }
+  .mensaje--oraculo { background: #1a1a1a; color: var(--texto-claro); align-self: flex-start; border-left: 2px solid var(--sangre); }
+  .mensaje--usuario { background: var(--sangre); color: #fff; align-self: flex-end; }
+
+  .oraculo-input-area { display: flex; padding: 1rem; border-top: 1px solid #333; gap: 0.5rem; }
+  #oraculo-input { flex: 1; padding: 0.8rem; background: #000; border: 1px solid #333; color: #fff; font-family: var(--mono); outline: none; }
+  #oraculo-send { background: var(--sangre); color: #fff; border: none; padding: 0 1.2rem; cursor: pointer; font-family: var(--mono); font-weight: bold; transition: 0.3s; }
+  #oraculo-send:hover { background: var(--sangre-clara); }
+
+  @media (max-width: 820px) {
+    .oraculo-modal { width: calc(100% - 2rem); right: 1rem; bottom: 5rem; height: 60vh; }
+    .oraculo-btn { bottom: 1rem; right: 1rem; padding: 0.8rem 1.2rem; font-size: 0.75rem; }
+  }
+</style>
 </head>
 <body class="landing">
 
@@ -38,6 +80,7 @@
     <p class="hero__sub">Lo que el tiempo escupió</p>
     <p class="hero__frase">«No todo lo que naufraga desaparece. Algunas cosas encuentran otra forma de llegar a la orilla.»</p>
     <div class="hero__acciones">
+      <!-- BOTÓN PRINCIPAL QUE LLEVA AL LECTOR -->
       <a class="btn btn--sangre" href="lector.html">Leer el Prólogo</a>
       <a class="btn btn--fantasma" href="#expediente">Abrir el Expediente</a>
     </div>
@@ -45,7 +88,6 @@
   </div>
 
   <div class="hero__portada revelar">
-    <!-- Portada conceptual basada en la imagen del PDF -->
     <div class="portada portada--itaue">
       <div class="portada__lomo"></div>
       <div class="portada__interior">
@@ -120,6 +162,7 @@
         <div class="demo-libro__hoja demo-libro__hoja--2"></div>
         <div class="demo-libro__hoja demo-libro__hoja--3"></div>
       </div>
+      <!-- SEGUNDO BOTÓN QUE LLEVA AL LECTOR -->
       <a class="btn btn--sangre btn--grande" href="lector.html">Entrar al Lector (Prólogo y Cap. I)</a>
     </div>
   </div>
@@ -166,6 +209,33 @@
 <!-- CTA sticky móvil -->
 <a class="cta-sticky" href="lector.html">Leer Prólogo</a>
 
+<!-- ============ ORÁCULO DE IA (BOTÓN FLOTANTE) ============ -->
+<button id="btn-oraculo" class="oraculo-btn">Invocar Oráculo</button>
+
+<div id="oraculo-container" class="oraculo-modal oculto">
+  <div class="oraculo-header">
+    <h3>El Oráculo de Itaue</h3>
+    <button id="oraculo-cerrar">×</button>
+  </div>
+  <div id="oraculo-mensajes" class="oraculo-mensajes">
+    <div class="mensaje mensaje--oraculo">Has invocado al Devorador. ¿Qué secreto del tiempo deseas conocer?</div>
+  </div>
+  <div class="oraculo-input-area">
+    <input type="text" id="oraculo-input" placeholder="Pregunta sobre el lore..." autocomplete="off">
+    <button id="oraculo-send">Enviar</button>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
 <script src="js/landing.js"></script>
+<script src="js/oraculo.js"></script>
+<script>
+  // Inicializar el oráculo cuando la página cargue
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.ITAUE_ORACULO) {
+      window.ITAUE_ORACULO.init();
+    }
+  });
+</script>
 </body>
 </html>
