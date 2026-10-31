@@ -80,13 +80,43 @@ body.lector{
 /* Página */
 .pagina{
   position:relative; z-index:1; flex:1;
-  padding:2.5rem 3.5rem;
-  display:flex; flex-direction:column; justify-content:center;
+  /* Aumentamos el margen superior e inferior para que el texto respire */
+  padding: 3.5rem 3.2rem 3.5rem 3.2rem; 
+  display:flex; flex-direction:column; 
+  justify-content: flex-start; /* El texto fluye desde arriba, no se centra */
   color:var(--texto-papel);
-  font-family:var(--serif-cuerpo); font-size:1.15rem; line-height:1.75;
+  font-family:var(--serif-cuerpo); 
+  font-size: 1.05rem; /* Un pelín más pequeño para que quepa más texto */
+  line-height: 1.65; /* Interlineado ligeramente más compacto */
+  overflow: hidden;
 }
-.pagina p{ margin:0 0 1em; text-align:justify; }
+
+.pagina p{ margin:0 0 1.2em; text-align:justify; }
 .pagina p:last-child{ margin-bottom:0; }
+
+/* Estilos específicos de contenido */
+.pagina--texto{ justify-content:flex-start; }
+
+.pagina__numero{ 
+  font-family:var(--mono); 
+  font-size:0.7rem; 
+  color:var(--sangre); 
+  text-transform:uppercase; 
+  letter-spacing:0.2em; 
+  margin-bottom:1.5rem; /* Más espacio debajo del "PRÓLOGO" */
+  text-align:center; 
+  border-bottom:1px solid rgba(139,0,0,0.2); 
+  padding-bottom:0.5rem; 
+}
+
+.pagina__titulo{ 
+  font-family:var(--serif-titulo); 
+  font-size:1.5rem; 
+  color:#111; 
+  margin:0 0 1.5rem; 
+  line-height:1.2; 
+  text-align:center; 
+}
 
 /* Estilos específicos de contenido */
 .pagina--texto{ justify-content:flex-start; }
