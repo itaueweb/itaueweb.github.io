@@ -104,8 +104,13 @@
     });
   }
 
+  // NUEVA FUNCIÓN: Añade clases de animación 3D para móviles
   function pintarMovil(direccion) {
-    vistaMovil.innerHTML = `<article class="pagina-movil">${render(PAGINAS[posM])}</article>`;
+    let claseAnim = "";
+    if (direccion === "siguiente") claseAnim = "anim-next";
+    if (direccion === "anterior") claseAnim = "anim-prev";
+
+    vistaMovil.innerHTML = `<article class="pagina-movil ${claseAnim}">${render(PAGINAS[posM])}</article>`;
   }
 
   function siguiente() {
@@ -162,6 +167,7 @@
     progreso.textContent = texto;
   }
 
+  // SWIPE MÓVIL
   let xInicio = null, yInicio = null;
   document.addEventListener("touchstart", e => {
     if (modo !== "movil") return;
@@ -190,7 +196,12 @@
     const movil = window.innerWidth <= 820;
     modo = movil ? "movil" : "libro";
     document.body.classList.toggle("modo-movil", movil);
-    if (movil) pintarMovil("siguiente"); else construirLibro();
+    
+    if (movil) {
+      pintarMovil("inicial"); // Carga inicial sin animación
+    } else {
+      construirLibro();
+    }
     actualizar();
   }
 
