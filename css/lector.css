@@ -54,7 +54,7 @@ body.lector{
   -webkit-backface-visibility:hidden;
   background-color:var(--papel-viejo);
   overflow:hidden; display:flex; flex-direction:column;
-  -webkit-transform: translate3d(0,0,0); /* Forzar renderizado GPU */
+  -webkit-transform: translate3d(0,0,0);
   transform: translate3d(0,0,0);
 }
 
@@ -68,17 +68,19 @@ body.lector{
   box-shadow:inset -15px 0 30px -20px rgba(0,0,0,0.5), -2px 0 5px rgba(0,0,0,0.3); 
 }
 
-/* Textura de papel envejecido */
-.cara::before{
+/* Textura de papel envejecido - SOLO para las páginas claras */
+.cara.frente::before, .cara.dorso::before {
   content:""; position:absolute; inset:0; pointer-events:none;
   background:radial-gradient(circle at 50% 50%, transparent 40%, rgba(100,80,60,0.15) 100%);
-  mix-blend-mode:multiply;
+  z-index: 0; 
 }
+/* Quitamos la textura oscura para que la nota se lea bien */
+.pagina--nota::before { display: none; }
 
 /* Página */
 .pagina{
   position:relative; z-index:1; flex:1;
-  padding:2.5rem 3.5rem; /* Ajustado para que no se corte el texto abajo */
+  padding:2.5rem 3.5rem;
   display:flex; flex-direction:column; justify-content:center;
   color:var(--texto-papel);
   font-family:var(--serif-cuerpo); font-size:1.15rem; line-height:1.75;
@@ -106,9 +108,20 @@ body.lector{
 
 /* Notas del autor / Expediente */
 .pagina--nota{
-  background:#1a1a1a; color:#ccc; font-family:var(--mono); font-size:0.9rem; line-height:1.8;
+  background:#121212; 
+  color:#ccc; /* Color claro para que resalte */
+  font-family:var(--mono); 
+  font-size:0.9rem; 
+  line-height:1.8;
 }
-.pagina--nota .etiqueta{ color:var(--sangre); border:1px solid var(--sangre); display:inline-block; padding:0.2rem 0.5rem; margin-bottom:1.5rem; font-size:0.7rem; }
+.pagina--nota .etiqueta{ 
+  color:var(--sangre); 
+  border:1px solid var(--sangre); 
+  display:inline-block; 
+  padding:0.2rem 0.5rem; 
+  margin-bottom:1.5rem; 
+  font-size:0.7rem; 
+}
 
 /* Controles */
 .controles{
@@ -140,12 +153,4 @@ body.modo-movil .vista-movil{ display:flex; justify-content:center; width:100%; 
   .barra__titulo{ display:none; }
   .escena{ padding:1rem; }
   .control{ width:50px; height:50px; font-size:1.2rem; }
-}
-.pagina{
-  position:relative; z-index:1; flex:1;
-  padding:2.5rem 3rem; /* Ajustamos un poco el margen interno */
-  display:flex; flex-direction:column; justify-content:center;
-  color:var(--texto-papel);
-  font-family:var(--serif-cuerpo); font-size:1.1rem; line-height:1.7; /* Fuente ligeramente más ajustada */
-  overflow: hidden; /* Esto asegura que si hay un error, el texto no se salga de la hoja */
 }
