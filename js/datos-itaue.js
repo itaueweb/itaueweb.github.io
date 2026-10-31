@@ -30,7 +30,20 @@ window.MUESTRA = {
       ]
     },
 
-    /* 4 · PRÓLOGO - PARTE 2 */
+       /* 4 · PRÓLOGO - PARTE 1 */
+    {
+      tipo: "texto",
+      numero: "PRÓLOGO",
+      titulo: "EL PRIMER SACRIFICIO",
+      parrafos: [
+        "<strong>I. LA NOCHE DEL SOL NEGRO</strong>",
+        "Quíbor, Valle de los Gayones — Año de Nuestro Señor 1489. Noche del eclipse que los ancianos llamaron 'La Boca que Devora la Luz'.",
+        "Hay noches que no pertenecen al flujo normal del tiempo, que existen en una especie de limbo entre lo que fue y lo que será, suspendidas como insectos en ámbar en la memoria colectiva de los pueblos que han tenido la desgracia —o el privilegio maldito— de presenciarlas.",
+        "La noche del Sol Negro en el valle de Quíbor fue una de esas noches, y quinientos dieciséis años después, cuando los descendientes de aquellos que sobrevivieron intentaban recordar lo ocurrido, solo podían hacerlo a través de un velo de terror tan espeso."
+      ]
+    },
+
+    /* 5 · PRÓLOGO - PARTE 2 */
     {
       tipo: "texto",
       parrafos: [
@@ -39,19 +52,6 @@ window.MUESTRA = {
         "Cuarenta días que los tambores sagrados no dejaban de sonar, marcando un ritmo que no era el de la celebración ni el de la guerra, sino algo más antiguo y terrible: el ritmo del tiempo mismo.",
         "<strong>Itaue.</strong>",
         "<strong>El Devorador de Tiempo.</strong>"
-      ]
-    },
-
-    /* 5 · CAPÍTULO I - PARTE 1 */
-    {
-      tipo: "texto",
-      numero: "CAPÍTULO I",
-      titulo: "EL CADÁVER QUE ENVEJECIÓ 100 AÑOS",
-      parrafos: [
-        "<strong>I. LA GEOMETRÍA DEL ESPANTO</strong>",
-        "Obelisco de Barquisimeto — 15 de octubre de 2005 — 3:17 AM.",
-        "Hay verdades que el ojo humano no debería presenciar, no porque su naturaleza sea horrenda —que lo es—, sino porque su mera contemplación desgarra el velo que separa la cordura del abismo insondable.",
-        "Aquella madrugada, bajo la luz azulina y espectral de los patrulleros, Valeria Campos comprendió, con la claridad terrible que precede a las revelaciones definitivas, que ciertos monumentos no se erigen para conmemorar glorias pasadas, sino para marcar lugares donde el tejido del tiempo se ha adelgazado hasta la transparencia."
       ]
     },
 
