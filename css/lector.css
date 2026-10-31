@@ -68,60 +68,41 @@ body.lector{
   box-shadow:inset -15px 0 30px -20px rgba(0,0,0,0.5), -2px 0 5px rgba(0,0,0,0.3); 
 }
 
-/* Textura de papel envejecido - SOLO para las páginas claras */
+/* Textura de papel envejecido */
 .cara.frente::before, .cara.dorso::before {
   content:""; position:absolute; inset:0; pointer-events:none;
   background:radial-gradient(circle at 50% 50%, transparent 40%, rgba(100,80,60,0.15) 100%);
   z-index: 0; 
 }
-/* Quitamos la textura oscura para que la nota se lea bien */
 .pagina--nota::before { display: none; }
 
 /* Página */
 .pagina{
   position:relative; z-index:1; flex:1;
-  /* Aumentamos el margen superior e inferior para que el texto respire */
-  padding: 3.5rem 3.2rem 3.5rem 3.2rem; 
+  padding: 2.5rem 3rem; 
   display:flex; flex-direction:column; 
-  justify-content: flex-start; /* El texto fluye desde arriba, no se centra */
+  justify-content: flex-start; 
   color:var(--texto-papel);
   font-family:var(--serif-cuerpo); 
-  font-size: 1.05rem; /* Un pelín más pequeño para que quepa más texto */
-  line-height: 1.65; /* Interlineado ligeramente más compacto */
+  font-size: 1rem; 
+  line-height: 1.6; 
   overflow: hidden;
 }
-
 .pagina p{ margin:0 0 1.2em; text-align:justify; }
 .pagina p:last-child{ margin-bottom:0; }
 
 /* Estilos específicos de contenido */
 .pagina--texto{ justify-content:flex-start; }
-
 .pagina__numero{ 
-  font-family:var(--mono); 
-  font-size:0.7rem; 
-  color:var(--sangre); 
-  text-transform:uppercase; 
-  letter-spacing:0.2em; 
-  margin-bottom:1.5rem; /* Más espacio debajo del "PRÓLOGO" */
-  text-align:center; 
-  border-bottom:1px solid rgba(139,0,0,0.2); 
+  font-family:var(--mono); font-size:0.7rem; color:var(--sangre); 
+  text-transform:uppercase; letter-spacing:0.2em; margin-bottom:1.5rem; 
+  text-align:center; border-bottom:1px solid rgba(139,0,0,0.2); 
   padding-bottom:0.5rem; 
 }
-
 .pagina__titulo{ 
-  font-family:var(--serif-titulo); 
-  font-size:1.5rem; 
-  color:#111; 
-  margin:0 0 1.5rem; 
-  line-height:1.2; 
-  text-align:center; 
+  font-family:var(--serif-titulo); font-size:1.5rem; color:#111; 
+  margin:0 0 1.5rem; line-height:1.2; text-align:center; 
 }
-
-/* Estilos específicos de contenido */
-.pagina--texto{ justify-content:flex-start; }
-.pagina__numero{ font-family:var(--mono); font-size:0.7rem; color:var(--sangre); text-transform:uppercase; letter-spacing:0.2em; margin-bottom:1rem; text-align:center; border-bottom:1px solid rgba(139,0,0,0.2); padding-bottom:0.5rem; }
-.pagina__titulo{ font-family:var(--serif-titulo); font-size:1.6rem; color:#111; margin:0 0 1.5rem; line-height:1.2; text-align:center; }
 .pagina__folio{ position:absolute; bottom:1.2rem; font-family:var(--mono); font-size:0.7rem; color:#666; }
 .cara.frente .pagina__folio{ right:2rem; }
 .cara.dorso .pagina__folio{ left:2rem; }
@@ -139,7 +120,7 @@ body.lector{
 /* Notas del autor / Expediente */
 .pagina--nota{
   background:#121212; 
-  color:#ccc; /* Color claro para que resalte */
+  color:#ccc; 
   font-family:var(--mono); 
   font-size:0.9rem; 
   line-height:1.8;
