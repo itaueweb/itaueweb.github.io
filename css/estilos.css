@@ -1,0 +1,99 @@
+:root{
+  /* Paleta Oscura / Horror */
+  --obsidiana: #08080a;
+  --carbon: #121215;
+  --sangre: #8b0000;
+  --sangre-clara: #c62828;
+  --mercurio: #a0a0a0;
+  --papel-viejo: #e8dcc4;
+  --texto-papel: #1a1a1a;
+  --texto-claro: #d1d1d1;
+
+  /* Tipografías */
+  --serif-titulo: 'Cinzel', Georgia, serif;
+  --serif-cuerpo: 'EB Garamond', Georgia, serif;
+  --mono: 'Courier Prime', 'Courier New', monospace;
+
+  --radio: 2px;
+  --sombra: 0 10px 30px rgba(0,0,0,0.8);
+  --transicion: 0.4s ease;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family:var(--serif-cuerpo);
+  font-size:18px;
+  line-height:1.7;
+  color:var(--texto-claro);
+  background:var(--obsidiana);
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{ display:block; max-width:100%; }
+a{ color:inherit; }
+button{ font-family:inherit; }
+
+/* Tipografía Global */
+h1,h2,h3{
+  font-family:var(--serif-titulo);
+  font-weight:400;
+  line-height:1.2;
+  margin:0;
+  letter-spacing:0.05em;
+}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:0.75rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--sangre-clara);
+  margin:0 0 1rem;
+}
+.texto{ margin:0 0 1.2rem; max-width:60ch; color:var(--texto-claro); }
+.texto--claro{ color:var(--texto-claro); }
+.destacado{ color:var(--sangre-clara); font-style:italic; font-size:1.1em; }
+.nota-menor{ font-size:0.8rem; color:var(--mercurio); display:block; margin-top:0.8rem; font-family:var(--mono); }
+.centro{ text-align:center; }
+.centro__texto{ margin-left:auto; margin-right:auto; }
+
+/* Botones */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0.9rem 2rem;
+  font-family:var(--mono);
+  font-size:0.85rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  text-decoration:none;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:all var(--transicion);
+}
+.btn--sm{ padding:0.5rem 1rem; font-size:0.75rem; }
+.btn--grande{ padding:1.2rem 2.5rem; font-size:0.95rem; }
+
+.btn--sangre{
+  background:var(--sangre);
+  color:#fff;
+  border-color:var(--sangre);
+}
+.btn--sangre:hover{ background:var(--sangre-clara); border-color:var(--sangre-clara); box-shadow:0 0 15px rgba(198,40,40,0.4); }
+
+.btn--fantasma{
+  background:transparent;
+  color:var(--texto-claro);
+  border-color:var(--mercurio);
+}
+.btn--fantasma:hover{ background:rgba(255,255,255,0.05); border-color:#fff; color:#fff; }
+
+/* Animaciones Reveal */
+.revelar{ opacity:0; transform:translateY(20px); transition:opacity 1s ease, transform 1s ease; }
+.revelar.visible{ opacity:1; transform:none; }
+
+@media (prefers-reduced-motion: reduce){
+  .revelar{ opacity:1; transform:none; }
+  *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+}

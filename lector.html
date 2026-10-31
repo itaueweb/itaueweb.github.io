@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>Lector · ITAUE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="css/lector.css">
+</head>
+<body class="lector">
+
+<header class="barra">
+  <a class="barra__volver" href="index.html">← Cerrar Expediente</a>
+  <span class="barra__titulo">ITAUE · Lo que el tiempo escupió</span>
+  <span class="barra__progreso" id="progreso">Página 1</span>
+</header>
+
+<main class="escena" id="escena">
+  <div class="libro" id="libro">
+    <div class="base-izq" aria-hidden="true"></div>
+    <div class="base-der" aria-hidden="true"></div>
+  </div>
+  <div class="vista-movil" id="vista-movil"></div>
+</main>
+
+<nav class="controles">
+  <button class="control" id="anterior" aria-label="Página anterior">←</button>
+  <span class="controles__indicador" id="indicador">1 / 12</span>
+  <button class="control" id="siguiente" aria-label="Página siguiente">→</button>
+</nav>
+
+<p class="aviso">Muestra de lectura · El libro completo requiere acceso</p>
+
+<script src="js/datos-itaue.js"></script>
+<script src="js/lector.js"></script>
+</body>
+</html>
