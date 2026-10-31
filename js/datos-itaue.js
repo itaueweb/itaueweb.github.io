@@ -91,6 +91,3 @@ window.MUESTRA = {
     }
   ]
 };
-    }
-  ]
-};
