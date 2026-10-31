@@ -12,8 +12,14 @@
 </head>
 <body class="lector">
 
+<!-- Canvas para partículas de polvo de tiempo -->
+<canvas id="particulas"></canvas>
+
 <header class="barra">
-  <a class="barra__volver" href="index.html">← Cerrar Expediente</a>
+  <div class="barra__grupo">
+    <a class="barra__volver" href="index.html">← Cerrar Expediente</a>
+    <button id="btn-audio" class="barra__audio" aria-label="Activar sonido">🔇</button>
+  </div>
   <span class="barra__titulo">ITAUE · Lo que el tiempo escupió</span>
   <span class="barra__progreso" id="progreso">Página 1</span>
 </header>
@@ -34,6 +40,27 @@
 
 <p class="aviso">Muestra de lectura · El libro completo requiere acceso</p>
 
+<!-- Botón flotante del Oráculo -->
+<button id="btn-oraculo" class="oraculo-btn">Invocar Oráculo</button>
+
+<!-- Ventana del Oráculo (IA) -->
+<div id="oraculo-container" class="oraculo-modal oculto">
+  <div class="oraculo-header">
+    <h3>El Oráculo de Itaue</h3>
+    <button id="oraculo-cerrar">×</button>
+  </div>
+  <div id="oraculo-mensajes" class="oraculo-mensajes">
+    <div class="mensaje mensaje--oraculo">Has invocado al Devorador. ¿Qué secreto del tiempo deseas conocer?</div>
+  </div>
+  <div class="oraculo-input-area">
+    <input type="text" id="oraculo-input" placeholder="Pregunta sobre el lore..." autocomplete="off">
+    <button id="oraculo-send">Enviar</button>
+  </div>
+</div>
+
+<script src="js/audio.js"></script>
+<script src="js/efectos.js"></script>
+<script src="js/oraculo.js"></script>
 <script src="js/datos-itaue.js"></script>
 <script src="js/lector.js"></script>
 </body>
